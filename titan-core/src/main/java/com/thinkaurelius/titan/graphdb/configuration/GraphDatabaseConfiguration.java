@@ -1326,7 +1326,9 @@ public class GraphDatabaseConfiguration {
                 String version = globalWrite.get(INITIAL_TITAN_VERSION);
                 Preconditions.checkArgument(version!=null,"Titan version has not been initialized");
                 if (!TitanConstants.VERSION.equals(version) && !TitanConstants.COMPATIBLE_VERSIONS.contains(version)) {
-                    throw new TitanException("StorageBackend version is incompatible with current Titan version: " + version + " vs. " + TitanConstants.VERSION);
+                    log.warn("StorageBackend version is incompatible with current Titan version: " + version + " "
+                                     + "vs"
+                                   + ". " + TitanConstants.VERSION);
                 }
 
                 final boolean managedOverridesAllowed;
